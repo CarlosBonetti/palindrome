@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/CarlosBonetti/palindrome/issues"
   },
-  "homepage": "https://github.com/CarlosBonetti/palindrome#readme"
+  "homepage": "https://github.com/CarlosBonetti/palindrome#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "is-palindrome": "^0.3.0"
+  }
 }
