@@ -15,3 +15,9 @@ To initialize the app:
 ```
 $ npm start
 ```
+
+## Testing the app
+
+```
+$ npm test
+```
