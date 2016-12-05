@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="" ng-app="palindromeApp">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body>
+    <body ng-cloak>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -21,24 +21,24 @@
         <div class="main-container">
           <h1>Palindrome</h1>
 
-            <div class="main">
-                <form id="form-palindrome" class="form-inline form-palindrome">
-                    <input type="text" class="form-control input-lg" placeholder="Type something to check if it is a palindrome..." required />
+            <div class="main" ng-controller="PalindromeController">
+                <form ng-submit="submit()" class="form-inline form-palindrome">
+                    <input ng-model="s" type="text" class="form-control input-lg" placeholder="Type something to check if it is a palindrome..." required />
                     <button class="btn btn-lg btn-primary">Check now!</button>
                 </form>
 
                 <div class="result">
-                    <p class="result-true text-success">
-                        "<span class="word"></span>" is a palindrome!
+                    <p ng-show="isPalindrome === true" class="result-true text-success">
+                        "<span class="word">{{previous}}</span>" is a palindrome!
                     </p>
-                    <p class="result-false text-danger">
-                        "<span class="word"></span>" is not palindrome
+                    <p ng-show="isPalindrome === false" class="result-false text-danger">
+                        "<span class="word">{{previous}}</span>" is not palindrome
                     </p>
                 </div>
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

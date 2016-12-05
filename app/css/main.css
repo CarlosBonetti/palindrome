@@ -95,6 +95,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+   display: none !important;
+}
+
 body {
   background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/blizzard.png);
 }
@@ -122,10 +126,6 @@ body {
 .result {
   margin-top: 10px;
   font-size: 1.5em;
-}
-
-.result p {
-  display: none;
 }
 
 .result .word {
