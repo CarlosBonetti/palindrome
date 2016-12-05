@@ -1,6 +1,7 @@
 var express = require('express');
-var router = module.exports = express.Router();
-var isPalindrome = require('stringywingy').isPalindrome;
+var router = express.Router();
+
+var isPalindrome = require('./logic/is-palindrome');
 
 router.get('/palindrome', function(req, res) {
     if (isPalindrome(req.query.s)) {
@@ -9,3 +10,5 @@ router.get('/palindrome', function(req, res) {
         res.sendStatus(400);
     }
 });
+
+module.exports = router;
