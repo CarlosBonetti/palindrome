@@ -1,24 +1,29 @@
-var form = $('#form-palindrome');
-var resultTrue = $('.result .result-true');
-var resultFalse = $('.result .result-false');
-var word = $('.result .word');
+angular.module('palindromeApp', [])
+  .service('PalindromeService', function($http) {
+    return {
+      isPalindrome: function(s) {
+        return $http({
+          method: 'GET',
+          url: '/api/palindrome?s=' + s,
+        });
+      }
+    };
+  })
+  .controller('PalindromeController', function($scope, PalindromeService) {
+    // Save whether the previous requisition was a palindrome
+    $scope.isPalindrome = undefined;
 
-$('#form-palindrome').on('submit', function(e) {
-  e.preventDefault();
-  var s = $(this).find('input').val();
+    // Save the previous submitted string
+    $scope.previous = '';
 
-  $.ajax({
-    url: 'api/palindrome',
-    data: { s: s },
-    success: function() {
-      resultTrue.show();
-      resultFalse.hide();
-      word.html(s);
-    },
-    error: function() {
-      resultFalse.show();
-      resultTrue.hide();
-      word.html(s);
-    }
+    $scope.submit = function() {
+      var s = $scope.s;
+      $scope.previous = s;
+
+       PalindromeService.isPalindrome(s).then(function(res) {
+         $scope.isPalindrome = true;
+       }, function(err) {
+         $scope.isPalindrome = false;
+       });
+    };
   });
-});

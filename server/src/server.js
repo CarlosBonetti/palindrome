@@ -10,3 +10,5 @@ app.use(express.static('./app'));
 app.listen(port, function() {
   console.log('Server started at port ' + port);
 });
+
+module.exports = app;
